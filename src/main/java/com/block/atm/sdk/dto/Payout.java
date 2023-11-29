@@ -23,15 +23,12 @@ public class Payout extends StaticStruct {
 
     public String toAddress;
 
-    //public String business;
-
 
     public Payout(String tokenAddress, BigInteger amount, String toAddress){
         super(new Address(tokenAddress), new Uint256(amount),new Address(toAddress));
         this.tokenAddress = tokenAddress;
         this.amount = amount;
         this.toAddress = toAddress;
-        //this.business = business;
     }
 
     public Payout(Address tokenAddress, Uint256 amount, Address to){

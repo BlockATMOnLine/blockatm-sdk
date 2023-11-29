@@ -11,6 +11,7 @@ import org.web3j.protocol.core.methods.request.Transaction;
 import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.EthTransaction;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
 
@@ -40,8 +41,14 @@ public class EthHelper {
         this.web3j = web3j;
     }
 
-
-    public String callContract(String contractAddress, Function function) throws IOException {
+    /**
+     *
+     * @param contractAddress
+     * @param function
+     * @return
+     * @throws IOException
+     */
+    protected String callContract(String contractAddress, Function function) throws IOException {
         Transaction transaction = Transaction.createEthCallTransaction(null, contractAddress, FunctionEncoder.encode(function));
         return web3j.ethCall(transaction, DefaultBlockParameterName.LATEST).send().getValue();
     }
@@ -56,8 +63,58 @@ public class EthHelper {
         return web3j.ethGetTransactionByHash(txId).send();
     }
 
+    /**
+     * query Transaction by txId (Including transaction status, transaction gas usage, log events, etc.)
+     * @param txId           txId
+     * @return
+     * @throws IOException
+     */
     public EthGetTransactionReceipt getTransactionReceipt(String txId) throws IOException {
         return web3j.ethGetTransactionReceipt(txId).send();
+    }
+
+    /**
+      * Determine whether the transaction is successful
+     * @param txId
+     * @return
+     * @throws IOException
+     */
+    public boolean txIsSuccessful(String txId) throws IOException {
+        EthGetTransactionReceipt receipt = getTransactionReceipt(txId);
+        TransactionReceipt transactionReceipt = receipt.getTransactionReceipt().get();
+        return  !EthUtils.isFail(transactionReceipt.getStatus());
+    }
+
+    /**
+     *  Create an unsigned transaction
+     * @param fromAddress       Transaction initiation address
+     * @param to                Deposit address
+     * @param amount            Amount of the transaction
+     * @param data
+     * @return
+     * @throws IOException
+     */
+    public RawTransaction createRawTransaction(String fromAddress,String to,BigInteger amount,String data) throws IOException {
+        BigInteger gasPrice = web3j.ethGasPrice().send().getGasPrice();
+
+        BigInteger nonce = web3j.ethGetTransactionCount(fromAddress, DefaultBlockParameterName.PENDING).send().getTransactionCount();
+        Transaction transaction = new Transaction(fromAddress,nonce,gasPrice,new BigInteger("3333333"),to,amount,data);
+
+        BigInteger gas;
+        try {
+            gas = web3j.ethEstimateGas(transaction).send().getAmountUsed();
+        } catch (Exception ex){
+            throw ex;
+        }
+
+        BigDecimal bGas = new BigDecimal(gas);
+        return RawTransaction.createTransaction(
+                nonce,
+                gasPrice,
+                bGas.toBigInteger(),
+                to,
+                amount,
+                data);
     }
 
     /**
@@ -76,29 +133,7 @@ public class EthHelper {
 
         Credentials credentials = Credentials.create(privateKey);
 
-        BigInteger gasPrice = web3j.ethGasPrice().send().getGasPrice();
-        gasPrice = new BigDecimal(gasPrice).multiply(new BigDecimal("1.3")).toBigInteger();
-
-        BigInteger nonce = web3j.ethGetTransactionCount(credentials.getAddress(), DefaultBlockParameterName.PENDING).send().getTransactionCount();
-
-        org.web3j.protocol.core.methods.request.Transaction transaction = new org.web3j.protocol.core.methods.request.Transaction(credentials.getAddress(),nonce,gasPrice,new BigInteger("3333333"),to,fromAmount,data);
-        BigInteger gas;
-        try {
-            gas = web3j.ethEstimateGas(transaction).send().getAmountUsed();
-        } catch (Exception ex){
-            throw ex;
-        }
-
-        BigDecimal bGas = new BigDecimal(gas);
-        bGas = bGas.add(bGas.multiply(new BigDecimal("0.3")));
-
-        RawTransaction rawTransaction = RawTransaction.createTransaction(
-                nonce,
-                gasPrice,
-                bGas.toBigInteger(),
-                to,
-                fromAmount,
-                data);
+        RawTransaction rawTransaction = createRawTransaction(credentials.getAddress(),to,fromAmount,data);
         // Sign transaction with private key
         String hexValue = Numeric.toHexString(TransactionEncoder.signMessage(rawTransaction,chaiId,credentials));
         // Broadcast signed transaction

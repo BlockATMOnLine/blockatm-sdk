@@ -30,7 +30,13 @@ public class Erc20Helper extends EthHelper {
         super(web3j);
     }
 
-
+    /**
+     *  Get the token balance of a certain address
+     * @param contractAddress
+     * @param who
+     * @return
+     * @throws IOException
+     */
     public BigInteger getBalance(String contractAddress, String who) throws IOException {
         List<Type> inputArgs2 = new ArrayList<>();
         inputArgs2.add(new Address(who));
@@ -42,6 +48,12 @@ public class Erc20Helper extends EthHelper {
         return new BigInteger(list.get(0).getValue().toString());
     }
 
+    /**
+     * Get the decimal places of the token
+     * @param contractAddress
+     * @return
+     * @throws IOException
+     */
     public BigInteger getDecimals(String contractAddress) throws IOException {
         List<Type> inputArgs2 = new ArrayList<>();
         List<TypeReference<?>> outputArgs2 = new ArrayList<>();

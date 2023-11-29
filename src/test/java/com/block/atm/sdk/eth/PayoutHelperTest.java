@@ -59,8 +59,15 @@ class PayoutHelperTest {
         System.out.println("txId is fail ->" + EthUtils.isFail(status));
 
     }
+    static void txIsSuccessful() throws IOException {
+        PayoutHelper payout = new PayoutHelper("https://eth-goerli.g.alchemy.com/v2/HwO5lIvcvSTL4PzCfFrTZwu7N__dhzkl");
+        Boolean eth = payout.txIsSuccessful("0xedde8d2a32f30968fec6eebbdbb5b59765abda00cb9351c1f5e29eb65f91cef2");
+        System.out.println("txId is fail ->" + eth);
+
+    }
+
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
          //payout();
-        getTransactionReceipt();
+        txIsSuccessful();
     }
 }
