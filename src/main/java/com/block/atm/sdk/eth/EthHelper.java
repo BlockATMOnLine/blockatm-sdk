@@ -24,40 +24,25 @@ import java.util.concurrent.ExecutionException;
  * @description
  * @date 2023/11/27 10:58
  */
-public class EthHelper {
+public class EthHelper extends BaseHelper {
 
-    private Web3j web3j;
-    /**
-     * eth node url
-     * @param url
-     */
-    public EthHelper(String url){
-        this(Web3j.build(new HttpService(url)));
+
+    public EthHelper(String url) {
+        super(url);
+    }
+
+    public EthHelper(Web3j web3j) {
+        super(web3j);
     }
 
 
-    public EthHelper(Web3j web3j){
-        this.web3j = web3j;
-    }
-
-
-    public String callContract(String contractAddress, Function function) throws IOException {
-        Transaction transaction = Transaction.createEthCallTransaction(null, contractAddress, FunctionEncoder.encode(function));
-        return web3j.ethCall(transaction, DefaultBlockParameterName.LATEST).send().getValue();
-    }
-
-    /**
-     * query Transaction by txId
-     * @param txId
-     * @return
-     * @throws IOException
-     */
     public EthTransaction getTransaction(String txId) throws IOException {
-        return web3j.ethGetTransactionByHash(txId).send();
+        return getTransactionBase(txId);
     }
+
 
     public EthGetTransactionReceipt getTransactionReceipt(String txId) throws IOException {
-        return web3j.ethGetTransactionReceipt(txId).send();
+        return getTransactionReceiptBase(txId);
     }
 
     /**
