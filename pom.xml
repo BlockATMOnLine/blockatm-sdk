@@ -122,7 +122,6 @@
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
-                                &lt;!&ndash; java8版本导致javadoc打包编译失败时候，添加&ndash;&gt;
                                 <configuration>
                                     <failOnError>false</failOnError>
                                     <doclint>none</doclint>
