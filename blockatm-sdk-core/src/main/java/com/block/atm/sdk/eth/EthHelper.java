@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
  * @description
  * @date 2023/11/27 10:58
  */
-public class EthHelper {
+public class EthHelper extends BaseHelper {
 
     private Web3j web3j;
     /**
@@ -33,24 +33,12 @@ public class EthHelper {
      * @param url
      */
     public EthHelper(String url){
-        this(Web3j.build(new HttpService(url)));
+        super(url);
     }
 
 
     public EthHelper(Web3j web3j){
-        this.web3j = web3j;
-    }
-
-    /**
-     *
-     * @param contractAddress
-     * @param function
-     * @return
-     * @throws IOException
-     */
-    protected String callContract(String contractAddress, Function function) throws IOException {
-        Transaction transaction = Transaction.createEthCallTransaction(null, contractAddress, FunctionEncoder.encode(function));
-        return web3j.ethCall(transaction, DefaultBlockParameterName.LATEST).send().getValue();
+        super(web3j);
     }
 
     /**
