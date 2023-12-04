@@ -14,6 +14,7 @@ public interface BlockATMConstant {
 
 
     String PAYOUT_TOKEN = "payoutToken";
+    String AUTO_PAYOUT_TOKEN = "payoutToken";
 
 
     /**

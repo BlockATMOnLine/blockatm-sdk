@@ -41,7 +41,7 @@ public class PayoutHelper extends EthHelper {
      * @throws ExecutionException
      * @throws IOException
      */
-    public String payout(String privateKey,String payoutContractAddress,List<Payout> payoutList, List<Utf8String> business,int chainId) throws InterruptedException, ExecutionException, IOException {
+   /* public String payout(String privateKey,String payoutContractAddress,List<Payout> payoutList, List<Utf8String> business,int chainId) throws InterruptedException, ExecutionException, IOException {
         List<Type> inputArgs = new ArrayList<>();
         inputArgs.add(new Bool(Boolean.TRUE));
         inputArgs.add(new DynamicArray(payoutList));
@@ -51,6 +51,31 @@ public class PayoutHelper extends EthHelper {
         Function nameFunction = new Function(BlockATMConstant.PAYOUT_TOKEN, inputArgs, outputArgs2);
         String data = FunctionEncoder.encode(nameFunction);
         String txId = sign(privateKey,payoutContractAddress, BigInteger.ZERO,data,chainId);
+        return txId;
+    }*/
+
+    /**
+     * 代付合约批量出金
+     * @param privateKey                财务人员地址的私钥
+     * @param payoutGatewayAddress     代付合约网关地址
+     * @param payoutList                代付指令
+     * @param business                  业务编号（和指令数组大小需要保持一样的大小）
+     * @param chainId                   链ID，如 1
+     * @return
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws IOException
+     */
+    public String payout(String privateKey,String payoutGatewayAddress,List<Payout> payoutList, List<Utf8String> business,int chainId) throws InterruptedException, ExecutionException, IOException {
+        List<Type> inputArgs = new ArrayList<>();
+        inputArgs.add(new Bool(Boolean.TRUE));
+        inputArgs.add(new DynamicArray(payoutList));
+        inputArgs.add(new DynamicArray(business));
+
+        List<TypeReference<?>> outputArgs2 = new ArrayList<>();
+        Function nameFunction = new Function(BlockATMConstant.AUTO_PAYOUT_TOKEN, inputArgs, outputArgs2);
+        String data = FunctionEncoder.encode(nameFunction);
+        String txId = sign(privateKey,payoutGatewayAddress, BigInteger.ZERO,data,chainId);
         return txId;
     }
 }
