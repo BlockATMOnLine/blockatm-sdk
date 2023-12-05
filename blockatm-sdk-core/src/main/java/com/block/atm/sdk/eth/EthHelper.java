@@ -26,8 +26,6 @@ import java.util.concurrent.ExecutionException;
  * @date 2023/11/27 10:58
  */
 public class EthHelper extends BaseHelper {
-
-    private Web3j web3j;
     /**
      * eth node url
      * @param url
