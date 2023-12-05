@@ -6,7 +6,7 @@
 
     <groupId>io.github.lawrence202311.block.atm.sdk</groupId>
     <artifactId>blockatm-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <version.qos.logback>1.2.3</version.qos.logback>
@@ -21,11 +21,11 @@
             <version>4.9.7</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${version.qos.logback}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -39,7 +39,8 @@
         <repository>
             <!--这两个id需要和setting.xml文件中的server字段的id进行对应-->
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+<!--            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>ossrh</id>
