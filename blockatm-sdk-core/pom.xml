@@ -5,15 +5,15 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.lawrence202311.block.atm.sdk</groupId>
+    <groupId>io.github.BlockATMOnLine.sdk</groupId>
     <artifactId>blockatm-sdk-core</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
-            <groupId>io.github.lawrence202311.block.atm.sdk</groupId>
+            <groupId>io.github.BlockATMOnLine.sdk</groupId>
             <artifactId>tron-core</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
@@ -126,17 +126,17 @@
 
     <!--url中配自己的项目地址,connection配自己项目地址加git,最后配自己对应账号主页-->
     <scm>
-        <url>https://github.com/lawrence202311/blockatm-sdk</url>
-        <connection>https://github.com/lawrence202311/blockatm-sdk.git</connection>
-        <developerConnection>https://github.com/lawrence202311</developerConnection>
+        <url>https://github.com/BlockATMOnLine/blockatm-sdk</url>
+        <connection>https://github.com/BlockATMOnLine/blockatm-sdk.git</connection>
+        <developerConnection>https://github.com/BlockATMOnLine</developerConnection>
     </scm>
 
     <!--开发者信息-->
     <developers>
         <developer>
-            <name>lawrence202311</name>
-            <email>lawrence202311@blockatm.com.cn</email>
-            <url>https://github.com/lawrence202311</url>
+            <name>BlockATMOnLine</name>
+            <email>BlockATMOnLine@blockatm.com.cn</email>
+            <url>https://github.com/BlockATMOnLine</url>
         </developer>
     </developers>
 </project>
