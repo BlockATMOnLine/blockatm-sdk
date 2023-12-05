@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.block.atm.sdk.BlockATMConstant;
 import com.block.atm.sdk.dto.Broadcast;
 import com.block.atm.sdk.eth.BaseHelper;
+import com.block.atm.sdk.eth.EthUtils;
 import com.block.atm.sdk.tron.core.HttpClientUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.tron.utils.TronUtils;
@@ -12,6 +13,7 @@ import org.tron.utils.TronUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthTransaction;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -60,7 +62,17 @@ public class TronHelper extends BaseHelper {
         return getTransactionReceiptBase(TronSDKUtils.convertTxIdToEth(txId));
     }
 
-
+    /**
+     * Determine whether the transaction is successful
+     * @param txId
+     * @return
+     * @throws IOException
+     */
+    public boolean txIsSuccessful(String txId) throws IOException {
+        EthGetTransactionReceipt receipt = getTransactionReceipt(txId);
+        TransactionReceipt transactionReceipt = receipt.getTransactionReceipt().get();
+        return  !EthUtils.isFail(transactionReceipt.getStatus());
+    }
 
     public String createTransaction(String contractAddress,String function_selector,String parameter,String fromAddress,BigDecimal feeLimit) throws IllegalAccessException, IOException, InstantiationException {
         JSONObject jsonObject = new JSONObject();

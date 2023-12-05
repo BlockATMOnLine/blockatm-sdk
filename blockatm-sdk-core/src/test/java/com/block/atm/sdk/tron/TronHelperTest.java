@@ -1,5 +1,6 @@
 package com.block.atm.sdk.tron;
 
+import com.block.atm.sdk.eth.PayoutHelper;
 import org.tron.utils.TronUtils;
 import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.Utf8String;
@@ -72,13 +73,25 @@ public class TronHelperTest {
         System.out.println("本次交易ID->" + ethTransaction.getTransactionReceipt().get().getStatus());
     }
 
+    static void txIsSuccessful() throws IOException {
+        String jsonRpc = "https://api.shasta.trongrid.io/jsonrpc";
+        String http = "https://api.shasta.trongrid.io";
+
+        TronPayoutHelper payoutHelper = new TronPayoutHelper(jsonRpc,http);
+        Boolean eth = payoutHelper.txIsSuccessful("abd1f2549021239ecdc8e5b8db069216fa46771d3147806d00a0be840b85db0c");
+        System.out.println("txId is fail ->" + eth);
+
+    }
+
+
 
 
 
 
     public static void main(String[] args) throws IllegalAccessException, NoSuchAlgorithmException, InstantiationException, IOException {
-        //payout();
-        //getTransaction();
+        payout();
+        /*getTransaction();
         getTransactionReceipt();
+        txIsSuccessful();*/
     }
 }
