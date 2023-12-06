@@ -1,4 +1,4 @@
-package com.block.atm.sdk.tron;
+package com.block.atm.sdk.eth;
 
 
 import com.block.atm.sdk.dto.Payout;
@@ -72,6 +72,8 @@ class PayoutHelperTest {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
          payout();
+//        getTransaction();
+//        getTransactionReceipt();
 //        txIsSuccessful();
     }
 }
