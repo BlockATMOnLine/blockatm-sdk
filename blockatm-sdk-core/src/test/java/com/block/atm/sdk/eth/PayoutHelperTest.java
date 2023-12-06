@@ -71,9 +71,9 @@ class PayoutHelperTest {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
-//         payout();
-        getTransaction();
-        getTransactionReceipt();
-        txIsSuccessful();
+         payout();
+//        getTransaction();
+//        getTransactionReceipt();
+//        txIsSuccessful();
     }
 }

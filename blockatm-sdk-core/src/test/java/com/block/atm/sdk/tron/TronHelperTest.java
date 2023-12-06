@@ -23,7 +23,7 @@ public class TronHelperTest {
 
         TronPayoutHelper payoutHelper = new TronPayoutHelper(jsonRpc,http);
         String privateKey = "ab56e9660036a20189ba763ca4175dcbb315092f722e8bc746181e62065c897b";
-        String payoutAddress = "TVdDeQJnibVBY3gWVjkiTf84Wxbf8tB2oZ";
+        String payoutAddress = "TEPxhToBFhzBok6UN8TRvHxf7FQDFcEcwP";
         String fromAddress = "TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp";
         //
         //List<Address> tokenList, List<Uint256 > amountList, List<Address> toList, List< Utf8String > business
