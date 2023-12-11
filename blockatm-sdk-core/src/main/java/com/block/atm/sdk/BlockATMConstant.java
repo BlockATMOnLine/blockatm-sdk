@@ -16,6 +16,10 @@ public interface BlockATMConstant {
     String PAYOUT_TOKEN = "payoutToken";
     String AUTO_PAYOUT_TOKEN = "payoutToken";
 
+    String GET_BUSINESS_ADDRESS = "getBusinessAddress";
+
+    String GET_PAYOUT = "getPayout";
+    String FEE_TOKEN_ADDRESS = "feeTokenAddress";
 
     /**
      * 交易状态成功

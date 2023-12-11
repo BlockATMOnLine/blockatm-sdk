@@ -4,6 +4,8 @@ package com.block.atm.sdk.eth;
 import com.block.atm.sdk.dto.Payout;
 import com.block.atm.sdk.eth.EthUtils;
 import com.block.atm.sdk.eth.PayoutHelper;
+import org.junit.Test;
+import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.Utf8String;
 import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthTransaction;
@@ -27,21 +29,24 @@ class PayoutHelperTest {
      static void payout() throws InterruptedException, ExecutionException, IOException {
 
          PayoutHelper payout = new PayoutHelper("https://eth-goerli.g.alchemy.com/v2/HwO5lIvcvSTL4PzCfFrTZwu7N__dhzkl");
-         //String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
+//         String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
          // 代付网关合约地址
          String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
 
          List<Payout> payoutList = new ArrayList<>();
 
          //  1 USDT = 1000000
-         Payout payoutUsdt = new Payout(USDT,new BigInteger("1000000"),"0x2d7FF2DC166aE09542C749bE052028e43825cde7");
-         Payout payoutUsdc = new Payout(USDC,new BigInteger("1000000"),"0x2d7FF2DC166aE09542C749bE052028e43825cde7");
+         //
+         String toAddress = "0x2d7FF2DC166aE09542C749bE052028e43825cde7";
+//         String toAddress = "0x57609702E66D6deE9D1f3a9FaB376B95b9Ec9e02";
+         Payout payoutUsdt = new Payout(USDT,new BigInteger("1000000"),toAddress);
+         Payout payoutUsdc = new Payout(USDC,new BigInteger("1000000"),toAddress);
 
          payoutList.add(payoutUsdt);
          payoutList.add(payoutUsdc);
          List<Utf8String> business = new ArrayList<>();
-         business.add(new Utf8String("TX1"));
-         business.add(new Utf8String("TX2"));
+         business.add(new Utf8String("abc"));
+         business.add(new Utf8String("abc"));
          // testnet 1， mainnet 5
          int chainId = 5;
 
@@ -72,8 +77,23 @@ class PayoutHelperTest {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
          payout();
+//        getPayoutBusinessAddress();
 //        getTransaction();
 //        getTransactionReceipt();
 //        txIsSuccessful();
+    }
+
+    public static void getPayoutBusinessAddress() throws IOException {
+        PayoutHelper payout = new PayoutHelper("https://eth-goerli.g.alchemy.com/v2/HwO5lIvcvSTL4PzCfFrTZwu7N__dhzkl");
+        //String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
+        // 代付网关合约地址
+        String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
+        Address address = payout.getPayoutBusinessAddress(payoutGatewayAddress);
+        System.out.println(address.getValue());
+
+        Address payoutAddr = payout.getPayoutAddress(address.getValue(),"0x2d7FF2DC166aE09542C749bE052028e43825cde7");
+        System.out.println(payoutAddr.getValue());
+
+
     }
 }
