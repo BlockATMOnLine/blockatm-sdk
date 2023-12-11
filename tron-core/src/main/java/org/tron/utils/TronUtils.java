@@ -50,6 +50,10 @@ public class TronUtils {
 		return Hex.toHexString(decodeFromBase58Check(address));
 	}
 
+	public static String hexToAddress(String hex) {
+		return encode58Check(ByteArray.fromHexString(hex));
+	}
+
 	/**
 	 * 离线创建地址
 	 *

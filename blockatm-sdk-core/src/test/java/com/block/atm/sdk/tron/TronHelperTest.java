@@ -23,7 +23,10 @@ public class TronHelperTest {
 
         TronPayoutHelper payoutHelper = new TronPayoutHelper(jsonRpc,http);
         String privateKey = "ab56e9660036a20189ba763ca4175dcbb315092f722e8bc746181e62065c897b";
-        String payoutAddress = "TVdDeQJnibVBY3gWVjkiTf84Wxbf8tB2oZ";
+        // payout contract Test
+        //String payoutAddress = "TVdDeQJnibVBY3gWVjkiTf84Wxbf8tB2oZ";
+        // payoutgateway
+        String payoutAddress = "TEPxhToBFhzBok6UN8TRvHxf7FQDFcEcwP";
         String fromAddress = "TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp";
         //
         //List<Address> tokenList, List<Uint256 > amountList, List<Address> toList, List< Utf8String > business
@@ -34,20 +37,20 @@ public class TronHelperTest {
         tokenList.add(new Address(TronSDKUtils.convertAddressToEth("TWjJj93GX51rJ8GRFihPVNA15ieLoheKaj")));
         List<Uint256 > amountList = new ArrayList<>();
         // 1 USDT
-        amountList.add(new Uint256(1000000));
+        amountList.add(new Uint256(1000000L));
         // 1 USDC
-        amountList.add(new Uint256(1000000));
+        amountList.add(new Uint256(1000000L));
 
         // 自己转入地址
         List<Address> toList = new ArrayList<>();
         // usdt 转入地址
-        toList.add(new Address(TronSDKUtils.convertAddressToEth("TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp")));
+        toList.add(new Address(TronSDKUtils.convertAddressToEth("TYVY9go3sYDQrt6QybU5iHhHfRtdxXkxjp")));
         // usdc 转入地址
-        toList.add(new Address(TronSDKUtils.convertAddressToEth("TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp")));
+        toList.add(new Address(TronSDKUtils.convertAddressToEth("TYVY9go3sYDQrt6QybU5iHhHfRtdxXkxjp")));
         // 业务编号
         List< Utf8String > business = new ArrayList<>();
-        business.add(new Utf8String("test1"));
-        business.add(new Utf8String("test2"));
+        business.add(new Utf8String("test1.NO1"));
+        business.add(new Utf8String("test2.NO1"));
 
         String txId = payoutHelper.payout(privateKey,payoutAddress,fromAddress,new BigDecimal(100),tokenList,amountList,toList,business);
         System.out.println("本次交易ID->" + txId);

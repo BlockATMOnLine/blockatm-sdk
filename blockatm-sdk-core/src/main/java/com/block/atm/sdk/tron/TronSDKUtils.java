@@ -24,6 +24,11 @@ public class TronSDKUtils {
         return tempUserAddress;
     }
 
+    public static String convertAddressToTrx(String ethAddress){
+        String address = ethAddress.substring(2);
+        address = TronUtils.hexToAddress("41" + address);
+        return address;
+    }
 
     public static BigDecimal trxToSun(BigDecimal trx) {
         return trx.multiply(decimal);
