@@ -39,14 +39,14 @@ class PayoutHelperTest {
          //
          String toAddress = "0x2d7FF2DC166aE09542C749bE052028e43825cde7";
 //         String toAddress = "0x57609702E66D6deE9D1f3a9FaB376B95b9Ec9e02";
-         Payout payoutUsdt = new Payout(USDT,new BigInteger("1000000"),toAddress);
-         Payout payoutUsdc = new Payout(USDC,new BigInteger("1000000"),toAddress);
+         Payout payoutUsdt = new Payout(USDT,new BigInteger("1000"),toAddress);
+         Payout payoutUsdc = new Payout(USDC,new BigInteger("1000"),toAddress);
 
          payoutList.add(payoutUsdt);
          payoutList.add(payoutUsdc);
          List<Utf8String> business = new ArrayList<>();
-         business.add(new Utf8String("abc"));
-         business.add(new Utf8String("abc"));
+         business.add(new Utf8String("q.no1"));
+         business.add(new Utf8String("q.no2"));
          // testnet 1， mainnet 5
          int chainId = 5;
 

@@ -37,9 +37,9 @@ public class TronHelperTest {
         tokenList.add(new Address(TronSDKUtils.convertAddressToEth("TWjJj93GX51rJ8GRFihPVNA15ieLoheKaj")));
         List<Uint256 > amountList = new ArrayList<>();
         // 1 USDT
-        amountList.add(new Uint256(1000000L));
+        amountList.add(new Uint256(1000L));
         // 1 USDC
-        amountList.add(new Uint256(1000000L));
+        amountList.add(new Uint256(1000L));
 
         // 自己转入地址
         List<Address> toList = new ArrayList<>();
