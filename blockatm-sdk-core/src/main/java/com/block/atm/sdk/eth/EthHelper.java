@@ -127,4 +127,11 @@ public class EthHelper extends BaseHelper {
         return ethSendTransaction.getTransactionHash();
     }
 
+    public String sendRawTransaction(String hexValue) throws IOException, ExecutionException, InterruptedException {
+        // Broadcast signed transaction
+        EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
+        return ethSendTransaction.getTransactionHash();
+    }
+
+
 }

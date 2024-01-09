@@ -1,9 +1,15 @@
 package com.block.atm.sdk.tron;
 
+import com.alibaba.fastjson.JSONObject;
+import org.tron.protos.Protocol;
+import com.block.atm.sdk.BlockATMConstant;
+import com.block.atm.sdk.dto.Broadcast;
 import com.block.atm.sdk.eth.PayoutHelper;
+import org.spongycastle.util.encoders.Hex;
+import org.tron.common.utils.ByteArray;
 import org.tron.utils.TronUtils;
-import org.web3j.abi.datatypes.Address;
-import org.web3j.abi.datatypes.Utf8String;
+import org.web3j.abi.FunctionEncoder;
+import org.web3j.abi.datatypes.*;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthTransaction;
@@ -91,10 +97,72 @@ public class TronHelperTest {
 
 
 
-    public static void main(String[] args) throws IllegalAccessException, NoSuchAlgorithmException, InstantiationException, IOException {
-        payout();
+    public static void main(String[] args) throws Exception {
+        sendRawTransaction();
         /*getTransaction();
         getTransactionReceipt();
         txIsSuccessful();*/
+    }
+
+    static String createTransaction() throws IOException, InstantiationException, IllegalAccessException {
+        String jsonRpc = "https://api.shasta.trongrid.io/jsonrpc";
+        String http = "https://api.shasta.trongrid.io";
+
+        TronPayoutHelper payoutHelper = new TronPayoutHelper(jsonRpc,http);
+
+        String payoutAddress = "TEPxhToBFhzBok6UN8TRvHxf7FQDFcEcwP";
+        String fromAddress = "TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp";
+
+        List<Address> tokenList = new ArrayList<>();
+        // usdt
+        tokenList.add(new Address(TronSDKUtils.convertAddressToEth("TEYKWmKvdCHX2NuX4tVmhxdN4P3PVjyMcu")));
+        // usdc
+        tokenList.add(new Address(TronSDKUtils.convertAddressToEth("TWjJj93GX51rJ8GRFihPVNA15ieLoheKaj")));
+        List<Uint256 > amountList = new ArrayList<>();
+        // 1 USDT
+        amountList.add(new Uint256(1000L));
+        // 1 USDC
+        amountList.add(new Uint256(1000L));
+
+        // 自己转入地址
+        List<Address> toList = new ArrayList<>();
+        // usdt 转入地址
+        toList.add(new Address(TronSDKUtils.convertAddressToEth("TYVY9go3sYDQrt6QybU5iHhHfRtdxXkxjp")));
+        // usdc 转入地址
+        toList.add(new Address(TronSDKUtils.convertAddressToEth("TYVY9go3sYDQrt6QybU5iHhHfRtdxXkxjp")));
+        // 业务编号
+        List< Utf8String > business = new ArrayList<>();
+        business.add(new Utf8String("test1.NO1"));
+        business.add(new Utf8String("test2.NO1"));
+
+        List<Type> inputParameters = new ArrayList<>();
+        inputParameters.add(new Bool(Boolean.FALSE));
+        inputParameters.add(new DynamicArray(tokenList));
+        inputParameters.add(new DynamicArray(amountList));
+        inputParameters.add(new DynamicArray(toList));
+        inputParameters.add(new DynamicArray(business));
+        String parameter = FunctionEncoder.encodeConstructor(inputParameters);
+        String trans =  payoutHelper.createTransaction(payoutAddress, BlockATMConstant.TRON_PAYOUT_TOKEN,parameter,fromAddress,new BigDecimal(100));
+        System.out.println("trans is fail ->" + trans);
+        return trans;
+    }
+
+
+    static void sendRawTransaction() throws Exception {
+        String jsonRpc = "https://api.shasta.trongrid.io/jsonrpc";
+        String http = "https://api.shasta.trongrid.io";
+
+        TronPayoutHelper payoutHelper = new TronPayoutHelper(jsonRpc,http);
+        String privateKey = "ab56e9660036a20189ba763ca4175dcbb315092f722e8bc746181e62065c897b";
+        // 使用上面的列子创建离线交易
+        String trans = createTransaction();
+        JSONObject transaction = JSONObject.parseObject(trans);
+        Protocol.Transaction tx = org.tron.utils.TronUtils.packTransaction(transaction.get("transaction").toString());
+        // 签署交易
+        byte[] bytes = TronUtils.signTransactionByte(tx.toByteArray(), ByteArray.fromHexString(privateKey));
+        String raw = Hex.toHexString(bytes);
+        Broadcast eth = payoutHelper.sendRawTransaction(raw);
+        System.out.println("txId is fail ->" + eth.getTxid());
+
     }
 }
