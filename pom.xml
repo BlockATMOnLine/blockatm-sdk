@@ -6,7 +6,7 @@
 
     <groupId>io.github.lawrence202311.block.atm.sdk</groupId>
     <artifactId>blockatm-sdk</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
     <modules>
         <module>tron-protobuf</module>

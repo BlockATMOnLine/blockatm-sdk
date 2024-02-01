@@ -36,7 +36,7 @@ class PayoutHelperTest {
 
      static void payout() throws InterruptedException, ExecutionException, IOException {
 
-         PayoutHelper payout = new PayoutHelper("https://eth-goerli.g.alchemy.com/v2/HwO5lIvcvSTL4PzCfFrTZwu7N__dhzkl");
+         PayoutHelper payout = new PayoutHelper("https://goerli.infura.io/v3/0c1f1f766ccb421289ada96e03e062b4");
 //         String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
          // 代付网关合约地址
          String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
@@ -84,13 +84,13 @@ class PayoutHelperTest {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
-         //payout();
+         payout();
 //        getPayoutBusinessAddress();
 //        getTransaction();
 //        getTransactionReceipt();
 //        txIsSuccessful();
 
-        sendRawTransaction();
+//        sendRawTransaction();
     }
 
 

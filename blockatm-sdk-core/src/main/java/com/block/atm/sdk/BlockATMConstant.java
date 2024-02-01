@@ -37,6 +37,7 @@ public interface BlockATMConstant {
     String TRIGGERSMARTCONTRACT = "/wallet/triggersmartcontract";
     // 广播交易的接口
     String BROADCASTHEX = "/wallet/broadcasthex";
+    String GETNOWBLOCK = "/wallet/getnowblock";
     // TUxNbLNpNxQafkHSMTUQf7AqdasdgeDSyp
     // ab56e9660036a20189ba763ca4175dcbb315092f722e8bc746181e62065c897b
     String TRON_PAYOUT_TOKEN = "payoutToken(bool,address[],uint256[],address[],string[])";
