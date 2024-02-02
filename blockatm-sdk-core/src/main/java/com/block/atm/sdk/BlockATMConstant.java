@@ -42,5 +42,8 @@ public interface BlockATMConstant {
     // ab56e9660036a20189ba763ca4175dcbb315092f722e8bc746181e62065c897b
     String TRON_PAYOUT_TOKEN = "payoutToken(bool,address[],uint256[],address[],string[])";
 
-
+    // 提高5%
+    int GAS_PRICE_TYPE_1 = 1;
+    // 提高20%
+    int GAS_PRICE_TYPE_2 = 2;
 }

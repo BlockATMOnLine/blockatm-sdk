@@ -29,17 +29,28 @@ class PayoutHelperTest {
 
     static String PRIVATEKEY = "6a2172d67536375ac4f97c75e857c49bfa764f68e6e326511c89468c9379b285";
     // Decimals 6
-    static String USDT = "0x92eFDFa35c75B259375eBe0F84ee1d95db0489b6";
+    // G
+    //static String USDT = "0x92eFDFa35c75B259375eBe0F84ee1d95db0489b6";
+    // S
+    static String USDT = "0x0C556DFC43A1de7fDaAdC798e7AA0fd90E62f54E";
     // Decimals 6
-    static String USDC = "0x2f96275bbb4a54714ef0251226c42811fb9f98aa";
+    // G
+    //static String USDC = "0x2f96275bbb4a54714ef0251226c42811fb9f98aa";
+    // S
+    static String USDC = "0x16033f59599c63fdc1de1c8fe569dcbd1f0d9da3";
+
 
 
      static void payout() throws InterruptedException, ExecutionException, IOException {
 
-         PayoutHelper payout = new PayoutHelper("https://goerli.infura.io/v3/0c1f1f766ccb421289ada96e03e062b4");
+         //PayoutHelper payout = new PayoutHelper("https://goerli.infura.io/v3/0c1f1f766ccb421289ada96e03e062b4");
+         //PayoutHelper payout = new PayoutHelper("https://eth-sepolia.g.alchemy.com/v2/OouUUiGDrddi_VIPMO8goNubK2gkZh4p");
+         PayoutHelper payout = new PayoutHelper("https://sepolia.infura.io/v3/c85f64a19f3045f7bac191f6708bc5ce");
 //         String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
-         // 代付网关合约地址
-         String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
+         // g网代付网关合约地址
+         // String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
+         // s网
+         String payoutGatewayAddress = "0x980B72c075AA000bFAF60A6DFa9C1576094e962B";
 
          List<Payout> payoutList = new ArrayList<>();
 
@@ -56,7 +67,8 @@ class PayoutHelperTest {
          business.add(new Utf8String("q.no1"));
          business.add(new Utf8String("q.no2"));
          // testnet 1， mainnet 5
-         int chainId = 5;
+         // int chainId = 5;
+          int chainId = 11155111;
 
         String txId = payout.payout(PRIVATEKEY,payoutGatewayAddress,payoutList,business,chainId);
         System.out.println("txId->" + txId);
@@ -83,8 +95,17 @@ class PayoutHelperTest {
 
     }
 
+
+    static void speedTransaction(String txId) throws IOException, ExecutionException, InterruptedException {
+        PayoutHelper payout = new PayoutHelper("https://sepolia.infura.io/v3/c85f64a19f3045f7bac191f6708bc5ce");
+        String newTxId = payout.speedTransaction(PRIVATEKEY,txId,11155111);
+        System.out.println("txId is  ->" + newTxId);
+
+    }
+
     public static void main(String[] args) throws InterruptedException, ExecutionException, IOException {
-         payout();
+//         payout();
+        speedTransaction("0x0e09cf151859d6a9286f504b7cbca5bc7e92c482b303b59a8765723cbb9f23c0");
 //        getPayoutBusinessAddress();
 //        getTransaction();
 //        getTransactionReceipt();

@@ -102,7 +102,8 @@ public class TronHelperTest {
         /*for (int i = 0; i < 5; i++){
             sendRawTransaction();
         }*/
-        createTransaction();
+        //createTransaction();
+        payout();
         /*getTransaction();
         getTransactionReceipt();
         txIsSuccessful();*/
