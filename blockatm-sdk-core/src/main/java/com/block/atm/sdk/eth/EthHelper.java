@@ -144,7 +144,7 @@ public class EthHelper extends BaseHelper {
         BigDecimal bGas = new BigDecimal(gas);
         return RawTransaction.createTransaction(
                 nonce,
-                new BigDecimal(gasPrice).multiply(new BigDecimal("0.5")).toBigInteger(),
+                gasPrice,
                 bGas.toBigInteger(),
                 to,
                 amount,
