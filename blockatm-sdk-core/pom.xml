@@ -7,7 +7,7 @@
 
     <groupId>io.github.BlockATMOnLine.sdk</groupId>
     <artifactId>blockatm-sdk-core</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
 
     <dependencies>
         <dependency>
