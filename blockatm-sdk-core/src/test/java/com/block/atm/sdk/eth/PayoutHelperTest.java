@@ -27,28 +27,35 @@ import java.util.concurrent.ExecutionException;
 class PayoutHelperTest {
 
 
+    //static String PRIVATEKEY = "6a2172d67536375ac4f97c75e857c49bfa764f68e6e326511c89468c9379b285";
     static String PRIVATEKEY = "6a2172d67536375ac4f97c75e857c49bfa764f68e6e326511c89468c9379b285";
     // Decimals 6
     // G
     //static String USDT = "0x92eFDFa35c75B259375eBe0F84ee1d95db0489b6";
     // S
     static String USDT = "0x0C556DFC43A1de7fDaAdC798e7AA0fd90E62f54E";
+    // op
+    //static String USDT = "0x43bCA8Fe12a7888224a7e76ec938eD9a29800cE2";
     // Decimals 6
     // G
     //static String USDC = "0x2f96275bbb4a54714ef0251226c42811fb9f98aa";
     // S
     static String USDC = "0x16033f59599c63fdc1de1c8fe569dcbd1f0d9da3";
+    // op
+//    static String USDC = "0x3b1Cf5438607051231beCAA0243c47C5BD60aeec";
 
 
 
      static void payout() throws InterruptedException, ExecutionException, IOException {
 
          //PayoutHelper payout = new PayoutHelper("https://goerli.infura.io/v3/0c1f1f766ccb421289ada96e03e062b4");
-         //PayoutHelper payout = new PayoutHelper("https://eth-sepolia.g.alchemy.com/v2/OouUUiGDrddi_VIPMO8goNubK2gkZh4p");
-         PayoutHelper payout = new PayoutHelper("https://sepolia.infura.io/v3/c85f64a19f3045f7bac191f6708bc5ce");
+         PayoutHelper payout = new PayoutHelper("https://eth-sepolia.g.alchemy.com/v2/OouUUiGDrddi_VIPMO8goNubK2gkZh4p");
+//         PayoutHelper payout = new PayoutHelper("https://optimism-sepolia.infura.io/v3/24861fb0ec084f909802464d910c7027");
 //         String payoutGatewayAddress = "0x2bbe32650867682af3bc956c52395ad06dbfef7d";
          // g网代付网关合约地址
-         // String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
+         //String payoutGatewayAddress = "0x8E5dF55ac224DB7424Fa8536edA9356F44474936";
+         // op
+         //String payoutGatewayAddress = "0x61B4B1826404c1Dd166A533089F2a3d8263fdc59";
          // s网
          String payoutGatewayAddress = "0x980B72c075AA000bFAF60A6DFa9C1576094e962B";
 
@@ -68,6 +75,8 @@ class PayoutHelperTest {
          business.add(new Utf8String("q.no2"));
          // testnet 1， mainnet 5
          // int chainId = 5;
+        //  int chainId = 5;
+        //  int chainId = 11155420;
           int chainId = 11155111;
 
         String txId = payout.payout(PRIVATEKEY,payoutGatewayAddress,payoutList,business,chainId);
