@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class EthHelper extends BaseHelper {
 
-    BigInteger maxGasLimit = new BigInteger("300000000");
+    BigInteger maxGasLimit = new BigInteger("10000000");
     /**
      * eth node url
      * @param url
