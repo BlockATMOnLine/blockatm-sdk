@@ -84,8 +84,8 @@ Boolean result = payout.txIsSuccessful("your_tx_id");
   
 
 ## 加入交流/意見反饋
-- Telegram：https://t.me/leona0306
-- Email：leona@mctech.cc
+- Telegram：https://t.me/Carlos_MTF
+- Email：alex.t@chixi88.com
 
 
 
