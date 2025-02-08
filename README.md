@@ -17,8 +17,8 @@
 
 |                                    |                                    |
 | ---------------------------------- | ---------------------------------- |
-| ![Demo](./.github/imgs/intro1.png) | ![Demo](./.github/imgs/intro2.png) |
-| ![Demo](./.github/imgs/intro3.png) | ![Demo](./.github/imgs/intro4.png) |
+| ![Dashboard](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20dashboard.png) | ![Asset](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20assets.png) |
+| ![Payment](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20payment.png) | ![Settings](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20settings.png) |
 
 
 
