@@ -3,7 +3,7 @@
 <a href="https://blockatm.net/"><img src="https://blockatm.net/assets/images/resources/logo-dark.png" width="477" height="101" alt="BlockATM Logo"></a>
 
 # BlockATM
-## 永不触碰您的资金，100%安全</br>
+## 永不触碰您的资金，100%安全</br></br>
 
 <p align="center">
   <a href="./README_en.md">English</a> |
@@ -13,6 +13,8 @@
 
 </div>
 
+</br>
+
 ## 🌍 官方网站 https://blockatm.net/
 
 |                                    |                                    |
@@ -20,16 +22,55 @@
 | ![Dashboard](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20dashboard.png) | ![Asset](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20assets.png) |
 | ![Payment](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20payment.png) | ![Settings](https://github.com/BlockATMOnLine/blockatm-sdk/blob/master/blockATM%20snapshot/blockatm%20settings.png) |
 
+</br>
+# BlockATM是什么
 
+- **BlockATM 是一个去中心化的支付解决方案**，利用智能合约提供安全、便捷且可信赖的加密货币支付服务。  
 
+- **BlockATM 是一个智能合约托管平台**，让用户100%掌控资金，无需依赖中心化机构。  
 
+- **BlockATM 是一个低成本交易工具**，每笔交易仅收取2 USDT，无额外平台费用。  
 
+- **BlockATM 是一个快速集成的支付工具**，支持一键嵌入小部件代码，轻松接入任意网站。  
+
+- **BlockATM 是一个实时交易通知系统**，通过Webhook推送交易状态，确保商户和用户即时获取信息。  
+
+- **BlockATM 是一个智能化交易防错系统**，客户无需手动输入钱包地址，避免输入错误导致的资产损失。  
+
+- **BlockATM 是一个全球化的跨境支付方案**，支持跨境交易，实现加密货币的无国界支付。  
+
+- **BlockATM 是一个适用于Web3生态的支付基础设施**，可用于NFT交易、去中心化金融（DeFi）等领域。  
+
+- **BlockATM 是一个支持C2C交易的安全支付平台**，确保点对点支付的透明度和资金安全。  
+
+- **BlockATM 是一个企业级加密资金管理工具**，支持智能合约自动化财务管理，提高财务透明度。  
+
+- **BlockATM 是一个无信任依赖的金融工具**，所有交易均由智能合约执行，减少人为干预风险。  
+
+- **BlockATM 是一个全天候运作的支付系统**，不受银行时间限制，24/7全天候交易处理。  
+
+- **BlockATM 是一个适用于电商的加密支付工具**，帮助商家快速接受比特币、USDT等加密货币付款。  
+
+- **BlockATM 是一个透明公开的支付方案**，所有交易记录均可在区块链上查询，确保数据真实可验证。  
+
+- **BlockATM 是一个简化支付流程的创新工具**，无需传统账户体系，即可进行加密货币交易。  
+
+- **BlockATM 是一个支持批量支付的企业支付工具**，适用于工资发放、供应链支付等场景。  
+
+- **BlockATM 是一个灵活的支付API平台**，可为开发者提供可扩展的支付接口，支持定制化集成。  
+
+- **BlockATM 是一个适用于交易所和OTC市场的支付解决方案**，帮助平台优化资金流动和用户体验。  
+
+- **BlockATM 是一个全新的智能合约金融工具**，为全球用户提供安全、低成本、高效率的加密支付体验。
+
+</br>
 # BlockATM SDK 🚀
 **为区块链开发者提供的一站式API接入工具，快速集成至您的DApp或交易所**  
-👉 [立即体验Demo](https://blockatm.net/) | 📖 [完整文档](https://github.com/BlockATMOnLine/blockatm-sdk/tree/master/docs) | 🐞 [提交问题](https://github.com/BlockATMOnLine/blockatm-sdk/issues)
 
-![BlockATM SDK示例截图](https://via.placeholder.com/800x400.png?text=SDK+Demo+Preview)  
-*（建议替换为实际项目截图或功能流程图）*
+👉 [立即体验](https://blockatm.net/) 
+📖 [完整文档](https://blockatm.gitbook.io/blockatm) 
+🐞 [提交问题](https://github.com/BlockATMOnLine/blockatm-sdk/issues)
+
 
 ---
 
